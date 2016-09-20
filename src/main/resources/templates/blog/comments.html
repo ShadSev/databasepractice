@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<form method="post" action="/låtsas/">
+    name: <input type="text" name="name"/>
+    title: <input type="text" name="title"/>
+    message: <input type="text" name="message"/>
+    <input type="hidden" name="BlogPost_ID" th:value="${ID}"/>
+    <input type="submit"/>
+</form>
+
+
+<article th:each="comment : ${comments}">
+    <header>
+        <p>
+        <div th:text="${comment.Title}"></div>
+        <div th:text="${comment.Message}"></div>
+        av <span th:text="${comment.Name}"></span>
+        </p>
+    </header>
+</article>
+
+
+
+
+</body>
+</html>

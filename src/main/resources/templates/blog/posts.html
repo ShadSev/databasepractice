@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${blog.Title}"></title>
+</head>
+<body>
+
+<h1 th:text="${blog.Title}" />
+<p>av <span th:text="${author.firstName} + ' &#x22;' + ${author.userName} + '&#x22; ' + ${author.lastName}" /></p>
+<article th:each="post : ${posts}">
+    <header>
+        <h2>
+            <a th:href="@{./posts/{id}/(id=${post.ID})}" th:text="${post.Title}" />
+        </h2>
+        <p>
+            <span th:text="${author.userName}"></span>,
+            <time th:datetime="${post.Date}" th:text="${post.Date.toLocalDate()} + ' ' + ${post.Date.toLocalTime()}"/>
+        </p>
+    </header>
+    <section>
+        <div th:text="${post.Body}"></div>
+    </section>
+</article>
+
+</body>
+</html>
